@@ -4,7 +4,7 @@
 ### 1.1. Bootstrap网格布局
 
  - 一开始将`"col-*"`写在`<div id="students">`的子元素`<div>`里，发现没有效果，因为` buildStudents()`会清除子元素。
- - 后来尝试在` buildStudents()`中新建子元素`<div>`，并添加`"col-*"`，发现可以。
+ - 后来尝试在` buildStudents()`中新建子元素`<div>`，在这个子元素里面表示学生的信息，并添加`"col-*"`，发现可以。
 
 
 ### 1.2. 如何搜寻
