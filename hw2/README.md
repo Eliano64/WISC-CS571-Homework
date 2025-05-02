@@ -89,7 +89,7 @@ Please clear the name and major input fields while doing this similar interest s
 ```js
 interestItemAnchorHTML.addEventListener("click", (e) => {
     const selectedText = e.target.innerText;
-    // TODO update the search terms to search just for the
+    // update the search terms to search just for the
     //      selected interest, and re-run the search!
 })
 ```
