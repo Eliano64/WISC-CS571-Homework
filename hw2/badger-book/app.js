@@ -80,7 +80,7 @@ function handleSearch(e) {
 	const interest=document.getElementById("search-interest").value.toLowerCase();
 	
 	const studs=students.filter(stud=>{
-		return (stud.name.first.toLowerCase().includes(name) || stud.name.last.toLowerCase().includes(name)) && stud.major.toLowerCase().includes(major) && hasInterest(stud.interests,interest);
+		return (stud.name.first+" "+stud.name.last).toLowerCase().includes(name.trim())&& stud.major.toLowerCase().includes(major.trim()) && hasInterest(stud.interests,interest.trim());
 	});
 
 	buildStudents(studs);
