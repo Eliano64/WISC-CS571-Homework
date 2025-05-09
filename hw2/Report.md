@@ -1,42 +1,27 @@
 # hw2
 ## 1. 遇见的困难与解决
 
-### 1.1. useEffect的条件
+### 1.1. Bootstrap网格布局
 
-在
+ - 一开始将`"col-*"`写在`<div id="students">`的子元素`<div>`里，发现没有效果，因为` buildStudents()`会清除子元素。
+ - 后来尝试在` buildStudents()`中新建子元素`<div>`，在这个子元素里面表示学生的信息，并添加`"col-*"`，发现可以。
 
-```js
-useEffect(() => {
-        setCurPage(1);
-    }, [searchName, searchMajor, searchInterest]);
-```
 
-中，最开始将`result`作为依赖项（因为在逻辑上是直接相关的）。但导致每次改变页码时，就会触发result改变（重渲染），页面都会自动跳转到第一页。
+### 1.2. 如何搜寻
 
-通过一系列实验发现，对于非`state`的变量，每次有`state`变量改变时，都会重新赋值。
+- 使用`.toLowerCase()`将输入的字符串转为小写
+- 使用`.includes()`判断是否包含子串
 
-### 1.2. `Form.Control`的设置
+### 1.3. 如何将`click`事件绑定到`li`上
 
 ```js
-// const [input, setInput] = useState("");
- <Form.Control
-        id="myInput"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
-```
-
-### 1.3. `Col`生效条件
-
-在`<Col><Col/>`标签外面不能是`<div><div/>`，但`<></>`可以。
-
-### 1.4. `props`的传参写法
-
-```js
-// const Interest = (props) => {
-//     return <li>{props.interest}</li>
-// }
-
-<Interest interest={interest} />
-//这里不应是props={interest}，而应该是interest={interest}
+    const interests=document.createElement("ul");
+    // ... 
+    interests.addEventListener("click",(e)=>{
+            e?.preventDefault();
+			document.getElementById("search-name").value="";
+			document.getElementById("search-major").value="";
+			document.getElementById("search-interest").value=e.target.textContent;
+			handleSearch(e);
+		})
 ```
